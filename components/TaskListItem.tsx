@@ -13,8 +13,8 @@ export const TaskListItem: FunctionComponent<Props> = ({ task, onDelete }) => {
   };
 
   return (
-    <li key={task.id}>
-      {task.name} <button onClick={onClick}>X</button>
+    <li>
+      {task.name} <button onClick={onClick}>✔</button>
     </li>
   );
 };
