@@ -24,6 +24,7 @@ export const CompletedTaskListItem: FunctionComponent<Props> = ({
       <style jsx>{`
         span {
           color: green;
+          text-decoration: line-through;
         }
       `}</style>
     </>

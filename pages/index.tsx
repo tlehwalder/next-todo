@@ -11,6 +11,7 @@ interface State {
 }
 
 function App() {
+  const [isCompletedListActive, setCompletedListActive] = useState(false);
   const [newTask, setNewTask] = useState({
     id: 1,
     name: "",
@@ -50,6 +51,18 @@ function App() {
     setTasks([...tasks, taskToUndo]);
   };
 
+  const completeListActiveElement = (
+    <>
+      <input
+        onChange={() => setCompletedListActive(!isCompletedListActive)}
+        type="checkbox"
+        defaultValue={isCompletedListActive.toString()}
+        id="completedListActive"
+      />
+      <label htmlFor="completedListActive">Show Done Tasks</label>
+    </>
+  );
+
   return (
     <div>
       <h2>TS next Todos ✔</h2>
@@ -59,9 +72,12 @@ function App() {
         onAdd={addTask}
         onChange={handleTaskChange}
       />
+      {completeListActiveElement}
       <div className="lists">
         <TaskList tasks={tasks} onDelete={deleteTask} />
-        <CompletedTaskList tasks={completedTasks} onDelete={undoTask} />
+        {isCompletedListActive ? (
+          <CompletedTaskList tasks={completedTasks} onDelete={undoTask} />
+        ) : null}
       </div>
       <style jsx>{`
         .lists {
