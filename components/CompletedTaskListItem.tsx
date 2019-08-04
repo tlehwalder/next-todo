@@ -21,6 +21,11 @@ export const CompletedTaskListItem: FunctionComponent<Props> = ({
         <span className="strike">{task.name}&nbsp;</span>
         <button onClick={onClick}>X</button>
       </li>
+      <style jsx>{`
+        span {
+          color: green;
+        }
+      `}</style>
     </>
   );
 };
